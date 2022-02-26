@@ -1,2 +1,14 @@
 .booking {
+  &__container {
+    max-width: $mobile-width;
+    margin: auto;
+
+    @include for-tablet-view {
+      max-width: $tablet-width;
+    }
+
+    @include for-desktop-view {
+      max-width: $desktop-width;
+    }
+  }
 }
