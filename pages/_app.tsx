@@ -15,6 +15,7 @@ function Application({ Component, pageProps }) {
     <>
       <Head>
         <title>Booking System</title>
+        <link rel="icon" href="../favicon.ico" type="image/x-icon" />
       </Head>
       <Header />
       <main>
