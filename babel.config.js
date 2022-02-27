@@ -1,7 +1,10 @@
 module.exports = {
   presets: [
     "@babel/preset-react", // necessary for all .jsx files
+    "@babel/preset-typescript", // necessary for all .tsx files
+    "next/babel",
   ],
+  plugins: ["@babel/plugin-proposal-do-expressions"],
 
   // fullcalendar attempts to import its own CSS files, but next.js does not allow this.
   // throw away these statements before they arrive at next.js,

@@ -5,66 +5,36 @@ import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
-import scrollGridPlugin from "@fullcalendar/scrollgrid";
 import momentPlugin from "@fullcalendar/moment";
 
+import ReactModal from "react-modal";
+import Button from "./button";
+
+// import { events } from "../data/events";
+// import { businessHours } from "../data/businessHours";
 export default class FullCalendarComponent extends React.Component {
   state = {
-    weekendsVisible: true,
     currentEvents: [],
-  };
-  render() {
-    return (
-      <div className="full-calendar">
-        <FullCalendar
-          plugins={[
-            interactionPlugin,
-            dayGridPlugin,
-            timeGridPlugin,
-            listPlugin,
-            scrollGridPlugin,
-            momentPlugin,
-          ]}
-          headerToolbar={{
-            left: "prev,next today",
-            center: "title",
-            right: "dayGridMonth,timeGridWeek,listWeek,",
-          }}
-          initialView="timeGridWeek"
-          editable={true}
-          selectable={true}
-          selectMirror={true}
-          dayMaxEvents={true}
-          weekends={this.state.weekendsVisible}
-          select={this.handleDateSelect}
-          eventContent={renderEventContent}
-          eventClick={this.handleEventClick}
-          eventsSet={this.handleEvents}
-        />
-      </div>
-    );
-  }
-  handleWeekendsToggle = () => {
-    this.setState({
-      weekendsVisible: !this.state.weekendsVisible,
-    });
+    modalIsOpen: false,
   };
 
   handleDateSelect = (selectInfo) => {
-    let title = prompt("Please enter a new title for your event");
-    let calendarApi = selectInfo.view.calendar;
+    this.openModal();
+    // let title = prompt("Please enter a new title for your event");
 
-    calendarApi.unselect(); // clear date selection
+    // let calendarApi = selectInfo.view.calendar;
 
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-      });
-    }
+    // calendarApi.unselect(); // clear date selection
+
+    // if (title) {
+    //   calendarApi.addEvent({
+    //     id: createEventId(),
+    //     title,
+    //     start: selectInfo.startStr,
+    //     end: selectInfo.endStr,
+    //     allDay: selectInfo.allDay,
+    //   });
+    // }
   };
 
   handleEventClick = (clickInfo) => {
@@ -82,6 +52,67 @@ export default class FullCalendarComponent extends React.Component {
       currentEvents: events,
     });
   };
+
+  openModal() {
+    this.setState({
+      modalIsOpen: true,
+    });
+  }
+
+  closeModal() {
+    this.setState({
+      modalIsOpen: false,
+    });
+  }
+
+  render() {
+    return (
+      <div className="full-calendar">
+        <ReactModal
+          className={`full-calendar__modal`}
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal.bind(this)}
+        >
+          <div>test</div>
+          <Button
+            onClick={() => {
+              alert("test");
+            }}
+          >
+            Submit
+          </Button>
+          <Button onClick={this.closeModal.bind(this)} style="secondary">
+            CLOSE
+          </Button>
+        </ReactModal>
+        <FullCalendar
+          plugins={[
+            interactionPlugin,
+            dayGridPlugin,
+            timeGridPlugin,
+            listPlugin,
+            momentPlugin,
+          ]}
+          headerToolbar={{
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,listWeek",
+          }}
+          initialView="timeGridWeek"
+          selectable={true}
+          selectMirror={false}
+          unselectCancel=".modal"
+          allDaySlot={true}
+          // selectConstraint="court-open"
+          editable={true}
+          select={this.handleDateSelect}
+          eventContent={renderEventContent}
+          eventClick={this.handleEventClick}
+          eventsSet={this.handleEvents}
+        />
+      </div>
+    );
+  }
 }
 
 // $("#calendar").html("yes");

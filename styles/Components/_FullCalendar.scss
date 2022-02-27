@@ -1,0 +1,16 @@
+.full-calendar {
+  &__modal {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    transform: translate(0, calc(-50% + 50vh));
+    z-index: 999999;
+    padding: 25px;
+    background-color: $color-ivory;
+  }
+}
+
+// FOR FULL CALENDAR MODULE to get Modal working
+.fc .fc-scroller-harness {
+  z-index: 0;
+}
