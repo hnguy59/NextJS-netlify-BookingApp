@@ -22,6 +22,7 @@
   },
   "include": [
     "next-env.d.ts",
+    "next-plugin.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "babel.config.js",

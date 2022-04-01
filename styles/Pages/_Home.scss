@@ -1,0 +1,51 @@
+.home {
+  &__welcome {
+    margin-bottom: 16px;
+    &-heading {
+      display: flex;
+      flex-direction: column;
+      &--emphasize {
+        font-size: xxx-large;
+      }
+    }
+  }
+
+  &__info {
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 70%;
+  }
+
+  &__book-now {
+    margin-bottom: 16px;
+    &-button {
+      border: unset;
+      box-shadow: unset;
+      padding: 12px 24px;
+      border-radius: 32px;
+      background: $color-border;
+      color: $color-font;
+      font-size: larger;
+
+      &:hover,
+      &:focus {
+        background: $color-old-burgundy-25;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__contact {
+    &-link {
+      text-decoration: none;
+      color: $color-primary;
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+    }
+  }
+}

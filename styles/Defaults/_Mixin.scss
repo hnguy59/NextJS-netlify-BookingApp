@@ -9,3 +9,10 @@
     @content;
   }
 }
+
+@mixin set-desktop-width {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $desktop-width;
+  width: 100%;
+}

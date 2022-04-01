@@ -1,3 +1,134 @@
 .header {
-  // background-color: $color-primary;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-border;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 100;
+
+  &__container {
+    @include set-desktop-width;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+
+    padding: 8px 0;
+  }
+
+  &__logo {
+    width: 34px;
+    height: 34px;
+
+    &-container {
+      padding-right: 16px;
+    }
+
+    &-link {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: $color-primary;
+      font-weight: bold;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    &-item {
+      text-decoration: none;
+      color: $color-primary;
+
+      &--active {
+        font-weight: bold;
+      }
+
+      &:hover, &:active {
+        color: $color-primary-active;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    color: $color-primary;
+  }
+
+  @include for-tablet-view {
+    &__mobile-button {
+      display: none;
+    }
+  }
+
+  @include for-desktop-view {
+    background-color: $color-white;
+    border-bottom: 1px solid $color-border;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 100;
+  
+    &__container {
+      @include set-desktop-width;
+      display: flex;
+      flex-direction: row;
+      justify-content:space-between;
+  
+      padding: 8px 0;
+    }
+  
+    &__logo {
+      width: 34px;
+      height: 34px;
+  
+      &-container {
+        padding-right: 16px;
+      }
+  
+      &-link {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: $color-primary;
+        font-weight: bold;
+      }
+    }
+  
+    &__nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      &-item {
+        text-decoration: none;
+        color: $color-primary;
+  
+        &--active {
+          font-weight: bold;
+        }
+  
+        &:hover, &:active {
+          color: $color-primary-active;
+        }
+      }
+    }
+  
+    &__info {
+      display: flex;
+      align-items: center;
+      color: $color-primary;
+    }
+  }
 }
+
+
+

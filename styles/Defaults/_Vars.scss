@@ -2,6 +2,8 @@ $color-ivory: #f2f5ea; // BACKGROUND
 
 $color-purple-mountain-majesty: #9882ac; // Primary Colour
 $color-old-burgundy: #3f2a2b; // Active Primary Colour
+$color-old-burgundy-50: #3f2a2b50;
+$color-old-burgundy-25: #3f2a2b25;
 
 $color-timberwolf: #d6dbd2; // Secondary Colour
 $color-laurel-green: #bbc7a4; // Active Secondary Colour
@@ -14,6 +16,8 @@ $color-primary: $color-purple-mountain-majesty;
 $color-primary-active: $color-old-burgundy;
 $color-secondary: $color-timberwolf;
 $color-secondary-active: $color-laurel-green;
+$color-border: $color-old-burgundy-50;
+$color-font: $color-old-burgundy;
 
 $desktop-width: 1280px;
 $tablet-width: 720px;
