@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { data } from "../data/data";
@@ -10,16 +10,20 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileMenuAnimatingClose, setMobileMenuAnimatingClose] =
     useState(false);
+  const [currentPath, setCurrentPath] = useState(router.pathname);
 
-  function openMobileButtonHandler(e) {
-    e.preventDefault();
+  if (currentPath != router.pathname) {
+    closeMobileButtonHandler();
+    setCurrentPath(router.pathname);
+  }
+
+  function openMobileButtonHandler() {
     if (!mobileMenuOpen) {
       setMobileMenuOpen(true);
     }
   }
 
-  function closeMobileButtonHandler(e) {
-    e.preventDefault();
+  function closeMobileButtonHandler() {
     if (mobileMenuOpen) {
       setMobileMenuAnimatingClose(true);
       setTimeout(function () {
