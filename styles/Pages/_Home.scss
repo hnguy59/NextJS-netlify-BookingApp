@@ -13,7 +13,10 @@
   &__info {
     margin-bottom: 16px;
     width: 100%;
-    max-width: 70%;
+
+    @include for-desktop-view {
+      max-width: 70%;
+    }
   }
 
   &__book-now {

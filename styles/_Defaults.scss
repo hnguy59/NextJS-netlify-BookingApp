@@ -47,7 +47,19 @@ body {
 }
 
 main {
-  margin-top: 51px;
-  @include set-desktop-width;
-  padding-top: 32px;
+  @include set-mobile-width;
+
+  @include for-tablet-view {
+
+    margin-top: 51px;
+    padding-top: 16px;
+    @include set-tablet-width;
+  }
+
+  @include for-desktop-view {
+
+    margin-top: 51px;
+    @include set-desktop-width;
+    padding-top: 32px;
+  }
 }

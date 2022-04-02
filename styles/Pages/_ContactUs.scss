@@ -1,0 +1,14 @@
+.contact-us {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    gap: 32px;
+    &__info {
+
+    }
+
+    &__map {
+        border: 2px solid $color-border;
+    }
+}

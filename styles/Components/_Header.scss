@@ -1,19 +1,70 @@
 .header {
   background-color: $color-white;
   border-bottom: 1px solid $color-border;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: 100;
+  width: width 100%;
+
+  @include for-tablet-view {
+    background-color: $color-white;
+    border-bottom: 1px solid $color-border;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 100;
+  }
 
   &__container {
-    @include set-desktop-width;
     display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-
+    position: fixed;
+    top: 0;
+    display: flex;
+    position: unset;
+    height: unset;
+    width: 100%;
     padding: 8px 0;
+    background: white;
+
+    &-inner {
+      @include set-mobile-width;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      @include for-tablet-view {
+        
+        @include set-tablet-width;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      @include for-desktop-view {
+        @include set-desktop-width;
+      }
+    }
+  }
+
+  &__mobile-button {
+    display: flex;
+    border: none;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+    color: $color-primary;
+
+    @include for-tablet-view {
+      display: none;
+    }
+
+    &--open { 
+
+    }
+
+    &--close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+    }
   }
 
   &__logo {
@@ -33,102 +84,215 @@
       color: $color-primary;
       font-weight: bold;
     }
+    &-name {
+      font-size: medium;
+    }
   }
 
   &__nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    display: none;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
     gap: 16px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include for-tablet-view {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include for-desktop-view {
+      gap: 48px;
+    }
+
     &-item {
+      font-size: large;
       text-decoration: none;
       color: $color-primary;
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: center;
+      gap: 16px;
+      @include set-mobile-width;
+
+      &-logo {
+
+        @include for-tablet-view {
+          display: none !important;
+        }
+
+        @include for-desktop-view {
+          display: flex !important;
+        }
+      }
 
       &--active {
         font-weight: bold;
+
+        @include for-desktop-view {
+          font-weight: bold;
+        }
       }
 
-      &:hover, &:active {
+      &:hover,
+      &:active {
         color: $color-primary-active;
+      }
+
+      @include for-tablet-view {
+        text-decoration: none;
+        color: $color-primary;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: unset;
       }
     }
   }
 
   &__info {
-    display: flex;
+    display: none;
     align-items: center;
     color: $color-primary;
-  }
-
-  @include for-tablet-view {
-    &__mobile-button {
-      display: none;
-    }
-  }
-
-  @include for-desktop-view {
-    background-color: $color-white;
-    border-bottom: 1px solid $color-border;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    z-index: 100;
-  
-    &__container {
-      @include set-desktop-width;
+    @include for-tablet-view {
       display: flex;
-      flex-direction: row;
-      justify-content:space-between;
+    }
+  }
+
+  &__mobile {
+    &-container {
+      display: none;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      z-index: 998;
+      background: white;
+      top: 0;
   
-      padding: 8px 0;
+      &-inner {
+        @include set-mobile-width;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+  
+      &--show {
+        display: flex;
+  
+        animation-duration: 1s;
+        animation-name: slideIn;
+  
+      
+        @include for-tablet-view {
+          display: none;
+        }
+        
+        @keyframes slideIn {
+          from {
+            top: 100%;
+            opacity: 0;
+          }
+          to {
+            top: 0;
+            opacity: 1;
+          }
+        }
+      }
+  
+      &--animating {
+        animation-duration: 1s;
+        animation-name: slideOut;
+        @keyframes slideOut {
+          from {
+            top: 0;
+            opacity: 1;
+          }
+          to {
+            top: 100%;
+            opacity: 0;
+          }
+        }
+      }
     }
   
-    &__logo {
-      width: 34px;
-      height: 34px;
+    &-mobile-button {
+      display: flex;
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      border: none;
+      background: transparent;
+      z-index: 999;
+    }
+  
+    &-logo {
+      width: 250px;
   
       &-container {
-        padding-right: 16px;
+        padding-right: unset;
       }
   
       &-link {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         gap: 8px;
         text-decoration: none;
         color: $color-primary;
         font-weight: bold;
       }
+      &-name {
+        font-size: x-large;
+      }
     }
   
-    &__nav {
+    &-nav {
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
       gap: 16px;
+      margin-left: auto;
+      margin-right: auto;
+  
       &-item {
+        font-size: large;
         text-decoration: none;
         color: $color-primary;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        gap: 16px;
+        @include set-mobile-width;
   
         &--active {
           font-weight: bold;
         }
   
-        &:hover, &:active {
+        &:hover,
+        &:active {
           color: $color-primary-active;
         }
       }
     }
   
-    &__info {
+    &-info {
       display: flex;
       align-items: center;
       color: $color-primary;
+      
+    justify-content: center;
+    
+    @include for-tablet-view {
+      justify-content: start;
+    }
     }
   }
 }
-
-
-

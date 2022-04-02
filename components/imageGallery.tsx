@@ -29,6 +29,12 @@ export default function ImageGallery({ slides }) {
     // setPrevBtnEnabled(embla.canScrollPrev());
     // setNextBtnEnabled(embla.canScrollNext());
   }, [embla, setSelectedIndex]);
+  const onSlideClick = useCallback(
+    (index) => {
+      if (embla && embla.clickAllowed()) window.open(mediaByIndex(index).src);
+    },
+    [embla]
+  );
 
   useEffect(() => {
     if (!embla) return;
@@ -48,6 +54,7 @@ export default function ImageGallery({ slides }) {
                   <img
                     className="embla__slide-img"
                     src={mediaByIndex(index).src}
+                    onClick={() => onSlideClick(index)}
                   />
                 </div>
               </div>

@@ -30,7 +30,17 @@
     &-inner {
       position: relative;
       overflow: hidden;
-      height: 500px;
+      height: 150px;
+      cursor: pointer;
+
+      @include for-tablet-view {
+height: 300px;
+      }
+
+      @include for-desktop-view {
+
+        height: 500px;
+      }
     }
     &-img {
       position: absolute;
@@ -104,7 +114,7 @@
 
     &:after {
         
-  background-color: $color-old-burgundy;
+  background-color: $color-old-burgundy-50;
   width: 100%;
   height: 4px;
   border-radius: 2px;
@@ -113,7 +123,7 @@
 
     &--is-selected::after {
         
-  background-color: $color-old-burgundy-50;
+  background-color: $color-old-burgundy;
   opacity: 1;
     }
   }
