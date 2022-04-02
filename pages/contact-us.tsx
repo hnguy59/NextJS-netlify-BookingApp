@@ -48,10 +48,9 @@ export default function ContactUs() {
       </div>
       <div className="contact-us__map">
         <iframe
-          width="600"
-          height="500"
+          className="contact-us__map-iframe"
           style={{ border: "0px" }}
-          src="https://maps.google.com/maps?q=153%20North%20Rd,%20Woodridge%20QLD%204114&t=&z=17&ie=UTF8&iwloc=&output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3537.7415517190047!2d153.0974746150584!3d-27.539487382861836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915bf8cd4c2f97%3A0x90250fad34390d03!2sDemoGroup%20Pty%20Ltd!5e0!3m2!1sen!2sau!4v1648910190405!5m2!1sen!2sau"
           scrolling="no"
         ></iframe>
       </div>

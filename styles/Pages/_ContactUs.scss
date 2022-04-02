@@ -1,14 +1,34 @@
 .contact-us {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     justify-content: space-between;
     gap: 32px;
+
+    @include for-tablet-view {
+    }
+
+    @include for-desktop-view {
+
+        flex-direction: row;
+    }
     &__info {
 
     }
 
     &__map {
         border: 2px solid $color-border;
+        &-iframe {
+            height: 250px;
+            width: 100%;
+            @include for-tablet-view {
+                height: 400px;
+            }
+            @include for-desktop-view {
+                
+          width: 600px;
+          height:500px;
+            }
+        }
     }
 }
