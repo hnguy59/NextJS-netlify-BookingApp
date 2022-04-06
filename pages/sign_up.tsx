@@ -15,17 +15,17 @@ const SignUp = () => {
 
   const onSubmit = (event) => {
     setError(null);
-    if (passwordOne === passwordTwo)
-      createUserWithEmailAndPassword(email, passwordOne)
-        .then((authUser) => {
-          console.log("Success. The user is created in Firebase");
-          router.push("/logged_in");
-        })
-        .catch((error) => {
-          // An error occurred. Set error message to be displayed to user
-          setError(error.message);
-        });
-    else setError("Password do not match");
+    // if (passwordOne === passwordTwo)
+    //   createUserWithEmailAndPassword(email, passwordOne)
+    //     .then((authUser) => {
+    //       console.log("Success. The user is created in Firebase");
+    //       router.push("/logged_in");
+    //     })
+    //     .catch((error) => {
+    //       // An error occurred. Set error message to be displayed to user
+    //       setError(error.message);
+    //     });
+    // else setError("Password do not match");
     event.preventDefault();
   };
 
