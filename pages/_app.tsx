@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import { data } from "../data/data";
+import { AuthUserProvider } from "../context/authUserContext";
 
 import Header from "../components/header";
 
@@ -15,7 +16,9 @@ function Application({ Component, pageProps }) {
       </Head>
       <Header />
       <main>
+        {/* <AuthUserProvider> // TODO: add authentication */}
         <Component {...pageProps} />
+        {/* </AuthUserProvider> */}
       </main>
     </>
   );

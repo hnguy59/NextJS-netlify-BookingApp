@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { data } from "../data/data";
-import { Home, Event, Call, Menu, Close } from "@material-ui/icons";
+import { Home, Event, Call, Menu, Close, Person } from "@material-ui/icons";
 
 export default function Header() {
   const router = useRouter();
@@ -68,6 +68,18 @@ export default function Header() {
               >
                 <Event className="header__nav-item-logo" />
                 Book now
+              </a>
+            </Link>
+            <Link href="/player/list">
+              <a
+                className={`header__nav-item ${
+                  router.pathname.includes("/players")
+                    ? "header__nav-item--active"
+                    : ""
+                }`}
+              >
+                <Person className="header__nav-item-logo" />
+                Players
               </a>
             </Link>
             <Link href="/contact-us">
@@ -142,6 +154,18 @@ export default function Header() {
               >
                 <Event className="header__mobile-nav-item-logo" />
                 Book now
+              </a>
+            </Link>
+            <Link href="/player/list">
+              <a
+                className={`header__mobile-nav-item ${
+                  router.pathname.includes("/players")
+                    ? "header__mobile-nav-item--active"
+                    : ""
+                }`}
+              >
+                <Person className="header__nav-item-logo" />
+                Players
               </a>
             </Link>
             <Link href="/contact-us">

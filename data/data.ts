@@ -7,5 +7,10 @@ export let data: dataModel = {
   orgPhone: '123456789',
   orgAddress: '123 Demo st, Earth, Australia 9999',
   orgAddressLink: 'https://g.page/demogroup-pty-ltd?share',
-  orgOpenHours: 'Everyday, 6am - 10pm'
+  orgOpenHours: 'Everyday, 6am - 10pm',
+  costs: {
+    session: 5,
+    drink_1: 1,
+    drink_2: 2
+  }
 }
