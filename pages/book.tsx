@@ -7,7 +7,7 @@ export default class Book extends React.Component {
     return (
       <div className="book">
         <div className="book__container">
-          {/* <Skedda /> TODO: Add back to save bandwidth */}
+          <Skedda />
         </div>
       </div>
     );
