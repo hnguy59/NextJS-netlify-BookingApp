@@ -74,8 +74,8 @@ export default function PlayerList() {
             setSearchValue(
               playerList.findIndex(
                 (x) =>
-                  x.first_name === newValue.first_name &&
-                  x.last_name === newValue.last_name
+                  x.first_name === newValue["first_name"] &&
+                  x.last_name === newValue["last_name"]
               )
             );
           }}
