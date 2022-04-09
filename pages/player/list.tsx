@@ -72,6 +72,7 @@ export default function PlayerList() {
           onChange={(event: any, newValue: string | null) => {
             setValue(newValue);
             setSearchValue(
+              // THIS IS WRONG BECAUSE IT SORTS THE LIST AFTER, NEED TO CHECK ( SORTING BY INDEX IN THE LIST )
               playerList.findIndex(
                 (x) =>
                   x.first_name === newValue["first_name"] &&
