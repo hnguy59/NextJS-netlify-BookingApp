@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
-import { Send } from "@material-ui/icons";
+import { Send, Add } from "@material-ui/icons";
 
 // Functions
 import { playerModel } from "../../data/model/playerModel";
@@ -73,19 +73,16 @@ export default function PlayerList() {
             setValue(newValue);
             setSearchValue(
               // THIS IS WRONG BECAUSE IT SORTS THE LIST AFTER, NEED TO CHECK ( SORTING BY INDEX IN THE LIST )
-              playerList.findIndex(
-                (x) =>
-                  x.first_name === newValue["first_name"] &&
-                  x.last_name === newValue["last_name"]
+              playerList.findIndex((x) =>
+                newValue
+                  ? x.first_name === newValue["first_name"] &&
+                    x.last_name === newValue["last_name"]
+                  : ""
               )
             );
           }}
           // Sorting object
-          options={playerList.sort((a, b) => {
-            var textA = a.first_name.toUpperCase();
-            var textB = b.first_name.toUpperCase();
-            return textA < textB ? -1 : textA > textB ? 1 : 0;
-          })}
+          options={playerList}
           groupBy={(item) => item.firstLetter}
           getOptionLabel={(item) => item.first_name + " " + item.last_name}
           renderInput={(params) => (
@@ -106,19 +103,35 @@ export default function PlayerList() {
             />
           )}
         />
-        <Link href={`/player/${searchValue}`}>
+        <Link href={`/player/${value ? value["id"] : ""}`}>
           <Button
             variant="contained"
             size="large"
             endIcon={<Send />}
-            // disabled={Number(searchValue) ? true : false} TODO: Fix this disabled state
+            // disabled={value ? true : false}
           >
             Go to profile
           </Button>
         </Link>
+        <Link href={`/player/add`}>
+          <Button
+            variant="contained"
+            size="large"
+            endIcon={<Add />}
+            // disabled={value ? true : false}
+          >
+            player
+          </Button>
+        </Link>
       </div>
-      <h2>Summary</h2>
-      {value ? <PlayerReceipt data={value} /> : ""}
+      {value ? (
+        <>
+          <h2>Summary</h2>
+          <PlayerReceipt data={value} />
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -19,9 +19,9 @@ export default function PlayerReceipt(props) {
   let rows = [];
   let invoiceTotal: number;
 
-  function ccyFormat(num: number) {
+  function ccyFormat(num: any) {
     if (num) {
-      return `$${num.toFixed(2)}`;
+      return `$${parseInt(num).toFixed(2)}`;
     }
   }
 

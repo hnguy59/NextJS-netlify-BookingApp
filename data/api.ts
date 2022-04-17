@@ -1,5 +1,7 @@
 import firebase from "../lib/firebase";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set, get, child } from "firebase/database";
+import { playerModel } from "./model/playerModel";
+import { RestoreOutlined } from "@material-ui/icons";
 
 const db = getDatabase(firebase.app());
 
@@ -8,10 +10,19 @@ export function getAllPlayers() {
   let result = [];
 
   try {
+    let snapshotResult = [];
+
     onValue(getAllPlayersRef, (snapshot) => {
       snapshot.forEach((item) => {
-        result[item.key] = item.val();
+        snapshotResult[item.key] = item.val();
       });
+    });
+
+    // Sort by alphabet
+    result = snapshotResult.sort((a, b) => {
+      var textA = a.first_name.toUpperCase();
+      var textB = b.first_name.toUpperCase();
+      return textA < textB ? -1 : textA > textB ? 1 : 0;
     });
   } catch (ex) {
     console.log(ex);
@@ -33,4 +44,29 @@ export function getPlayer(id) {
   }
 
   return result;
+}
+
+export function setPlayer(model: playerModel, index: number) {
+  try {
+    model.id = index;
+    set(ref(db, "players/" + index), model);
+    
+  } catch (ex) {
+    console.log(ex);
+  }
+}
+
+export async function newIndex(): Promise<number> {
+  let result: number;
+  const dbRef = ref(db, "/players");
+
+    await onValue(dbRef, (snapshot) => {
+      if (snapshot.exists()) {
+        result = snapshot.val().length;
+      } else {
+        result = 0;
+      };
+    });
+  
+  return await result;
 }
